@@ -1,0 +1,60 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<body>
+<div class="container contact-form">
+            <div class="contact-image">
+                <img src="https://image.ibb.co/kUagtU/rocket_contact.png" alt="rocket_contact"/>
+            </div>
+            <h1>SAVE YOUR VACCINE STOCK</h1>
+      <div class="form-group">
+       <label for="city">City</label>
+      <input #city="ngModel" ngModel name = "city" id="city" type="text" class="form-control" width="400" required>
+       <div class="alert alert-danger" *ngIf="city.touched && city.invalid">
+         city is required
+       </div>
+      </div>
+      <div class="form-group">
+        <label for="type">Type</label>
+        <input #type="ngModel" ngModel name = "type" id="type" type="text" class="form-control" required>
+       <div class="alert alert-danger" *ngIf="type.touched && type.invalid">
+         type is required
+       </div>
+       </div>
+       <div class="form-group">
+        <label for="quantity">Quantity</label>
+        <input #quantity="ngModel" ngModel name = "quantity" id="quantity" type="text" class="form-control" required>
+       <div class="alert alert-danger" *ngIf="quantity.touched && quantity.invalid">
+             quantity is required
+       </div>
+       </div>
+       <div class="form-group">
+        <label for="price">price</label>
+        <div class="input-group">
+          <span class="input-group-addon"> ₹ </span>
+          <input #price="ngModel" ngModel name = "price" id="price" type="text" class="form-control" required [min]="0">
+          </div>
+          <div class="alert alert-danger" *ngIf=" price.touched && price.invalid ">
+               <div *ngIf="price.errors.required"> price is required</div>
+               <div *ngIf="price.errors.min">price should be 0 or higher</div>
+          </div>
+        </div>
+       <button class="btn btn-primary">save</button>
+
+
+
+
+  </div>
+  <div class="col-md-6">
+    <div class="card" style="width: 1000px;" style="height: 300px;" >
+      <img src="type.value" class="card-img-top">
+      <div class="card-body">
+        <h4 class="card-title">{{city.value}}</h4>
+        <p class="card-text">{{ type.value }}</p>
+        <p class="card-text">{{ quantity.value }}</p>
+        <p class="card-text">{{ price.value }}</p>
+      </div>
+    </div>
+  </div>
+</body>
